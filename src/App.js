@@ -10,12 +10,14 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Switch>
-        <Route path="/game" component={Game} />
-        <Route path="/highScores" component={HighScores} />
-        <Route path="/gameOver" component={GameOver} />
-        <Route path="/" component={Home} />
-      </Switch>
+      <div className="container">
+        <Switch>
+          <Route path="/game" component={Game} />
+          <Route path="/highScores" component={HighScores} />
+          <Route path="/gameOver" component={GameOver} />
+          <Route path="/" component={Home} />
+        </Switch>
+      </div>
     </Router>
   );
 }
