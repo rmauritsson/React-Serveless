@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useScore } from "../context/ScoreContext";
 import {
   StyledGame,
   StyledCharacter,
@@ -9,15 +10,16 @@ import {
 import { Strong } from "../styled/Random";
 
 const Game = ({ history }) => {
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState();
   const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
   const [currectCharacter, setCurrentCharacter] = useState("");
   const MAX_SECONDS = 30;
-  const [ms, setMs] = useState(0);
+  const [ms, setMs] = useScore(0);
   const [seconds, setSeconds] = useState(MAX_SECONDS);
 
   useEffect(() => {
     setRandomCharactor();
+    setScore(0);
     const currentTime = new Date();
     const interval = setInterval(() => updateTime(currentTime), 1);
   }, []);
